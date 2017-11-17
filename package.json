@@ -5,7 +5,11 @@
     "Web app for auto deploying GitHub repositories. Built to make the life of a NCBI-Hackathon organizer easier!",
   "main": "start.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "nodemon ./start.js --ignore public/",
+    "css":
+      "postcss -u postcss-custom-properties postcss-color-function postcss-import autoprefixer cssnano -d public/dist/ public/css/grdr.css --no-map --watch",
+    "start":
+      "concurrently \"npm run watch\" \"npm run css\" --names \"💻,🛠\" --prefix name"
   },
   "repository": {
     "type": "git",
